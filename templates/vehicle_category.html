@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white py-10">
+    <h1 class="text-4xl font-bold mb-8">Vehicle Category Detection</h1>
+    <form method="post" enctype="multipart/form-data" class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div class="mb-6">
+            <label for="file" class="block mb-2 text-sm font-medium">Upload Image:</label>
+            <div class="flex items-center justify-center w-full">
+                <label for="file" class="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-gray-700 border-gray-600 text-gray-400 hover:bg-gray-600 hover:border-gray-500 transition duration-300">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg aria-hidden="true" class="w-12 h-12 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V7a5 5 0 0110 0v9m1 4h-6a2 2 0 01-2-2v-1a2 2 0 012-2h6a2 2 0 012 2v1a2 2 0 01-2 2zm-6-4h6"></path>
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">Drag and drop file here</span> or click to browse</p>
+                        <p class="text-xs text-gray-400">Limit 200MB per file • JPG, PNG, JPEG</p>
+                    </div>
+                    <input id="file" type="file" name="file" class="hidden" accept="image/*" required>
+                </label>
+            </div>
+        </div>
+        <div class="flex justify-center mt-6">
+            <button class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300" type="submit">Submit</button>
+        </div>
+    </form>
+
+    {% if img %}
+    <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md text-center">
+        <h2 class="text-2xl font-semibold mb-4">Detected Image:</h2>
+        <img src="data:image/png;base64,{{ img }}" class="rounded-lg shadow-lg">
+    </div>
+    {% endif %}
+
+    <div class="mt-10 bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-2xl text-center">
+        <h2 class="text-2xl font-semibold mb-4">About Vehicle Category Detection</h2>
+        <p class="text-lg mb-4">
+            Vehicle Category Detection is crucial for traffic management and road safety. By identifying and categorizing vehicles, it helps in:
+        </p>
+        <ul class="list-disc list-inside mb-4">
+            <li class="mb-2">Reducing traffic congestion by providing real-time traffic flow data.</li>
+            <li class="mb-2">Enhancing road safety by monitoring vehicle types and enforcing regulations.</li>
+            <li class="mb-2">Assisting in urban planning and infrastructure development.</li>
+        </ul>
+        <p class="text-lg">
+            Our system uses advanced deep learning models to accurately detect and categorize vehicles, ensuring efficient traffic management and safer roads for everyone.
+        </p>
+    </div>
+</div>
+{% endblock %}

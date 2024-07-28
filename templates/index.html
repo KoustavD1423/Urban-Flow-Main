@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Introduction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold">Project Introduction</h1>
+
+        <div class="mt-8">
+            <p class="font-semibold">
+                Traffic Management refers to the combination of measures that serve to preserve traffic capacity and improve the 
+                security, safety and reliability of the overall road transport system. These measures make use of ITS systems, 
+                services and projects in day-to-day operations that impact on road network performance. Proper traffic management 
+                can ensure that:
+            </p>
+            <ul class="list-disc list-inside mt-4 max-w-2xl">
+                <li>Traffic flows smoothly and efficiently.</li>
+                <li>Roads are well maintained and safe for all users, including pedestrians and cyclists.</li>
+                <li>Congestion, local pollution and accidents are minimized.</li>
+                <li>Vehicles are within speed limits and heading in the correct direction along the lane.</li>
+            </ul>
+            <p class="mt-4 font-semibold">
+                In this project, we aim to provide smart solutions to address problems associated with Traffic Management:
+            </p>
+            <ul class="list-disc list-inside mt-4 max-w-2xl">
+                <li>Vehicle Category Classification and Detection.</li>
+                <li>Traffic Density Classification.</li>
+                <li>Pothole Object Detection.</li>
+            </ul>
+        </div>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold">Vehicle Category Classification and Detection</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <img src="{{ url_for('static', filename='images/home_page/Vehicle Categorization.png') }}" class="w-full h-96 object-cover">
+                </div>
+                <div>
+                    <p>- Reducing vehicle speed can prevent road crash incidents as an average 1 km increase in vehicle speed can lead to a 3 percent increase in road accidents.</p>
+                    <p class="mt-2">- Detecting and Categorizing different types of vehicle in traffic flow can help in determining vehicle speed using optical flow and enforcing speed limits.</p>
+                    <p class="mt-2">- Single Shot Detector architecture with MobileNet_v3 backbone is utilized for categorizing different Vehicle types.</p>
+                    <p class="mt-2">- The model achieved a mean average precision of 0.645 on the test dataset @ IOU=0.50</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold">Traffic Density Classification</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <p>- The primary goal of traffic management is to make the movement of goods and persons as efficient, orderly, and safe as possible.</p>
+                    <p class="mt-2">- Traffic Density Classification will be instrumental in redirecting traffic from major roads during peak hours and making the overall movement safer and more efficient.</p>
+                    <p class="mt-2">- EfficientNet_b0 architecture is utilized for traffic density classification into Empty, Low, Medium, High, and Traffic Jam categories.</p>
+                    <p class="mt-2">- The model achieved a mean average accuracy of 0.93 on the test dataset.</p>
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='images/home_page/Traffic Classification.png') }}" class="w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold">Pothole Object Detection</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <img src="{{ url_for('static', filename='images/home_page/Pothole.png') }}" class="w-full h-80 object-cover">
+                </div>
+                <div>
+                    <p>- The safety and efficiency of travel systems depend on how well roads are kept up.</p>
+                    <p class="mt-2">- Pothole Object Detection will be helpful in early identification of potholes and lowering long-term repair costs.</p>
+                    <p class="mt-2">- It will be critical for ensuring the safety of drivers and the overall efficiency of transportation infrastructure.</p>
+                    <p class="mt-2">- Single Shot Detector with MobileNet_v3 backbone is utilized for detecting potholes on the roads.</p>
+                    <p class="mt-2">- The model achieved a mean average precision of 0.512 at 0.50 intersection over union.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

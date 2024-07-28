@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Video Output</title>
+</head>
+<body>
+    <h1>Processed Video</h1>
+    <video width="640" height="480" controls>
+        <source src="{{ url_for('static', filename='outputs/' + filename) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <br>
+    <a href="/">Go Back to Home</a>
+</body>
+</html>

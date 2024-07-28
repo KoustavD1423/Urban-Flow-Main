@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto p-6 bg-gray-900 rounded-lg shadow-lg mt-8">
+  <h1 class="text-3xl font-bold mb-6 text-white text-center">Pothole Object Detection</h1>
+  <form method="POST" enctype="multipart/form-data" class="space-y-6">
+    <div>
+      <label class="block mb-2 text-gray-400">Input Image File</label>
+      <div class="flex items-center justify-center w-full">
+        <label for="file" class="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-500 rounded-lg cursor-pointer bg-gray-800 hover:bg-gray-700 transition duration-300">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <svg aria-hidden="true" class="w-12 h-12 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V8m0 8l-4-4m4 4l4-4M3 12h12"></path>
+            </svg>
+            <p class="mb-2 text-sm text-gray-400">Drag and drop file here or click to select</p>
+            <p class="text-xs text-gray-400">Limit 200MB per file • JPG, PNG, JPEG</p>
+          </div>
+          <input id="file" type="file" name="file" class="hidden" accept="image/*" required>
+        </label>
+      </div>
+    </div>
+
+    <div class="flex space-x-4">
+      <div class="w-1/2">
+        <label for="conf_threshold" class="block mb-2 text-sm text-gray-400">Confidence Threshold</label>
+        <input type="range" name="conf_threshold" id="conf_threshold" min="0" max="1" step="0.01" value="0.2" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+        <div class="flex justify-between text-xs text-gray-400 mt-2">
+          <span>0.00</span>
+          <span>1.00</span>
+        </div>
+      </div>
+      <div class="w-1/2">
+        <label for="iou_threshold" class="block mb-2 text-sm text-gray-400">IOU Threshold</label>
+        <input type="range" name="iou_threshold" id="iou_threshold" min="0" max="1" step="0.01" value="0.7" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+        <div class="flex justify-between text-xs text-gray-400 mt-2">
+          <span>0.00</span>
+          <span>1.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-6">
+      <input type="submit" value="Detect" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg cursor-pointer transition duration-300">
+    </div>
+  </form>
+
+  {% if img %}
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold text-white text-center">Detection Result:</h2>
+      <div class="mt-6 flex justify-center">
+        <img id="detection-result" src="data:image/jpeg;base64,{{ img }}" alt="Pothole Detection Result" class="w-full rounded-lg shadow-md">
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('detection-result').scrollIntoView({ behavior: 'smooth' });
+        });
+      </script>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
